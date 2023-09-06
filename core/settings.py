@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-27&+n$-^bww!ri)+@i+2@0&ui%y@k2wv&^l5s(g=ins1mf_uv$'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = json.loads(os.getenv("DEBUG","true").lower())
 
 ALLOWED_HOSTS = []
 
@@ -31,11 +32,11 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
-SESSION_COOKIE_AGE = 86400
-CART_SESSION_ID = 'cart'
+SESSION_COOKIE_AGE = os.getenv("SESSION_COOKIE_AGE")
+CART_SESSION_ID = os.getenv("CART_SESSION_ID")
 
-STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51HIHiuKBJV2qfWbDh2lEbabbfNVwnf4TTabNQOtTD2F8z44uMesvkKpKXCUFUePNKpZ99JSORZh6gsa17IhfV30U00P9iFVCqQ'
-STRIPE_API_KEY_HIDDEN = 'sk_test_51HIHiuKBJV2qfWbDvOA4nKbkuus4jNey2ePMXwoyf6cRwMRaQIPZ1VpAeWThUU85wbfLSUbHf7w5yJmvhtH5HHai00J6IfUBEA'
+STRIPE_API_KEY_PUBLISHABLE = os.getenv("STRIPE_API_KEY_PUBLISHABLE")
+STRIPE_API_KEY_HIDDEN = os.getenv("STRIPE_API_KEY_HIDDEN")
 
 
 

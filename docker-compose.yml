@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  # Django application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8005:8000"
+    env_file:
+      - conf.env
+    volumes:
+      - ./:/app
+
