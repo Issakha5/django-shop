@@ -37,8 +37,8 @@ def start_order(request):
         payment_method_types=['card'],
         line_items=items,
         mode='payment',
-        success_url='http://127.0.0.1:8000/order/success/',
-        cancel_url='http://127.0.0.1:8000/order/'
+        success_url='http://127.0.0.1:8005/order/success/',
+        cancel_url='http://127.0.0.1:8005/order/'
     )
     payment_intent = session.payment_intent
 
