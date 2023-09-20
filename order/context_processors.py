@@ -1,5 +1,5 @@
-from order.cart import Cart
+from order.models.cart import Cart
 
 
 def cart(request):
-    return {'cart': Cart(request)}
+    return {"cart": Cart(request)}

@@ -6,7 +6,7 @@
     <div class="pt-3 flex items-center justify-between">
         <a href="{% url 'product' product.slug %}">{{ product.name }}</a>
 
-        <a
+        <a  href="{% url 'add_to_cart' product.id %}"
             hx-get="{% url 'add_to_cart' product.id %}"
             hx-target="#menu-cart-button"
             hx-swap="outerHTML"

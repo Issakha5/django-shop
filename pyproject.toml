@@ -1,0 +1,9 @@
+[tool.black]
+line-length = 120
+exclude = '(migrations|snapshots)'
+
+[tool.isort]
+profile = "black"
+
+[tool.pylint.format]
+max-line-length = "120"

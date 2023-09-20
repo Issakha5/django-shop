@@ -7,11 +7,11 @@ from ..forms import SignUpForm
 def home(request):
     products = Product.objects.all()[0:8]
 
-    return render(request, 'product/index.html', context={'products': products})
+    return render(request, "product/index.html", context={"products": products})
 
 
 def signup(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SignUpForm(request.POST)
 
         if form.is_valid():
@@ -19,25 +19,25 @@ def signup(request):
 
             login(request, user)
 
-            return redirect('/')
+            return redirect("/")
     else:
         form = SignUpForm()
 
-    return render(request, 'product/signup.html', {'form': form})
+    return render(request, "product/signup.html", {"form": form})
 
 
 def account(request):
-    return render(request, 'product/account.html')
+    return render(request, "product/account.html")
 
 
 def edit_account(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         user = request.user
-        user.first_name = request.POST.get('first_name')
-        user.last_name = request.POST.get('last_name')
-        user.email = request.POST.get('email')
-        user.username = request.POST.get('username')
+        user.first_name = request.POST.get("first_name")
+        user.last_name = request.POST.get("last_name")
+        user.email = request.POST.get("email")
+        user.username = request.POST.get("username")
         user.save()
 
-        return redirect('account')
-    return render(request, 'product/edit_account.html')
+        return redirect("account")
+    return render(request, "product/edit_account.html")

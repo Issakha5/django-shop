@@ -31,8 +31,8 @@ RUN git clone https://github.com/pyenv/pyenv.git $PYENV_ROOT
 ENV PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 # Install specific Python version using pyenv
-ENV PYTHON_VERSION="3.11.1"
-RUN pyenv install $PYTHON_VERSION && pyenv local $PYTHON_VERSION
+ENV PYTHON_VERSION="3.11.4"
+RUN pyenv install $PYTHON_VERSION && pyenv global $PYTHON_VERSION
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -53,6 +53,7 @@ COPY . .
 # Install project dependencies using pipenv
 RUN pipenv install
 
+#RUN pip install -r requirements.txt --no-cache-dir
 
 # Expose port 8000 for the Django development server
 EXPOSE 8000
